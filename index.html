@@ -2,273 +2,382 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KERATINAS GLOW | Cabello radiante</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERATINAS GLOW</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff7fa;
-      color: #4b2638;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #f8c8dc);
+            color: #66334d;
+            min-height: 100vh;
+        }
 
-    header {
-      background: #f6dce8;
-      padding: 22px;
-      text-align: center;
-    }
+        header {
+            text-align: center;
+            padding: 25px 15px;
+            background: #e88bb5;
+            color: white;
+        }
 
-    header h1 {
-      color: #a83d70;
-      letter-spacing: 3px;
-      font-size: 28px;
-    }
+        header h1 {
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
 
-    header p {
-      margin-top: 7px;
-      color: #75445b;
-    }
+        header p {
+            margin-top: 8px;
+        }
 
-    .principal {
-      max-width: 1050px;
-      margin: 35px auto;
-      padding: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 35px;
-      flex-wrap: wrap;
-    }
+        .contenedor {
+            max-width: 950px;
+            margin: 35px auto;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
 
-    .imagen {
-      flex: 1;
-      min-width: 260px;
-      text-align: center;
-    }
+        .contenido {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
 
-    .imagen img {
-      width: 100%;
-      max-width: 390px;
-      border-radius: 22px;
-      box-shadow: 0 8px 25px #d9a9bd;
-    }
+        .contenido h2 {
+            font-size: 30px;
+            color: #b34d7d;
+            margin-bottom: 15px;
+        }
 
-    .contenido {
-      flex: 1;
-      min-width: 280px;
-      max-width: 450px;
-    }
+        .contenido p {
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
 
-    .contenido h2 {
-      font-size: 36px;
-      color: #a83d70;
-      margin-bottom: 15px;
-    }
+        /* ANIMACIÓN DE CABELLO */
+        .animacion {
+            flex: 1;
+            min-width: 260px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .contenido p {
-      line-height: 1.7;
-      margin-bottom: 18px;
-      color: #684557;
-    }
+        .cabello {
+            width: 190px;
+            height: 230px;
+            position: relative;
+            animation: movimiento 3s ease-in-out infinite;
+        }
 
-    .beneficios {
-      background: white;
-      border-radius: 15px;
-      padding: 18px;
-      margin: 20px 0;
-      line-height: 2;
-      box-shadow: 0 4px 15px #efd6e1;
-    }
+        .cabeza {
+            width: 125px;
+            height: 145px;
+            background: #ffd2b5;
+            border-radius: 48% 48% 45% 45%;
+            position: absolute;
+            top: 55px;
+            left: 33px;
+            z-index: 2;
+        }
 
-    .suscripcion {
-      background: #f9e6ee;
-      padding: 35px 20px;
-      text-align: center;
-    }
+        .pelo {
+            width: 165px;
+            height: 205px;
+            background: linear-gradient(90deg, #4b241e, #9b5638, #4b241e);
+            border-radius: 48% 48% 40% 40%;
+            position: absolute;
+            top: 15px;
+            left: 13px;
+            z-index: 1;
+            animation: brillo 2.5s infinite alternate;
+        }
 
-    .suscripcion h2 {
-      color: #a83d70;
-      margin-bottom: 12px;
-    }
+        .pelo::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 175px;
+            background: linear-gradient(90deg, transparent, #d69b75, transparent);
+            left: 65px;
+            top: 15px;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
 
-    .suscripcion p {
-      margin-bottom: 20px;
-    }
+        .flequillo {
+            width: 125px;
+            height: 65px;
+            background: #5c3025;
+            border-radius: 50% 50% 35% 35%;
+            position: absolute;
+            top: 43px;
+            left: 33px;
+            z-index: 3;
+        }
 
-    form {
-      max-width: 450px;
-      margin: auto;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+        .ojo {
+            width: 9px;
+            height: 9px;
+            background: #49302b;
+            border-radius: 50%;
+            position: absolute;
+            top: 115px;
+            z-index: 4;
+        }
 
-    input {
-      flex: 1;
-      min-width: 220px;
-      padding: 14px;
-      border: 1px solid #d99ab5;
-      border-radius: 25px;
-      font-size: 15px;
-      outline: none;
-    }
+        .ojo.izquierdo {
+            left: 68px;
+        }
 
-    button {
-      padding: 14px 24px;
-      border: none;
-      border-radius: 25px;
-      background: #a83d70;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .ojo.derecho {
+            left: 115px;
+        }
 
-    button:hover {
-      background: #7e2852;
-      transform: scale(1.04);
-    }
+        .sonrisa {
+            width: 25px;
+            height: 12px;
+            border-bottom: 3px solid #b34d7d;
+            border-radius: 50%;
+            position: absolute;
+            top: 145px;
+            left: 82px;
+            z-index: 4;
+        }
 
-    button:disabled {
-      opacity: 0.6;
-      cursor: wait;
-      transform: none;
-    }
+        .brillo {
+            position: absolute;
+            color: #fff;
+            font-size: 28px;
+            animation: destello 1.5s infinite alternate;
+        }
 
-    #mensaje {
-      margin-top: 18px;
-      font-weight: bold;
-    }
+        .brillo.uno {
+            top: 20px;
+            left: 0;
+        }
 
-    footer {
-      background: #4b2638;
-      color: white;
-      text-align: center;
-      padding: 22px;
-      line-height: 1.7;
-    }
+        .brillo.dos {
+            right: 0;
+            bottom: 35px;
+            animation-delay: 0.5s;
+        }
 
-    @media (max-width: 600px) {
-      .contenido h2 {
-        font-size: 29px;
-      }
-    }
-  </style>
+        @keyframes movimiento {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(3deg) translateY(-10px); }
+        }
+
+        @keyframes brillo {
+            from { filter: brightness(0.9); }
+            to { filter: brightness(1.3); }
+        }
+
+        @keyframes destello {
+            from { opacity: 0.3; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        .formulario {
+            background: white;
+            max-width: 520px;
+            margin: 10px auto 40px;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(150, 60, 100, 0.15);
+        }
+
+        .formulario h2 {
+            color: #b34d7d;
+            margin-bottom: 12px;
+        }
+
+        .formulario p {
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e5a6c4;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #d95f98;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #b9477e;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #mensaje {
+            margin-top: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #e88bb5;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 27px;
+            }
+
+            .contenido h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>KERATINAS GLOW</h1>
-    <p>Tu cabello, tu brillo, tu esencia</p>
-  </header>
+    <header>
+        <h1>KERATINAS GLOW</h1>
+        <p>Tu cabello, tu brillo, tu mejor versión</p>
+    </header>
 
-  <main>
-    <section class="principal">
+    <main>
+        <section class="contenedor">
 
-      <div class="imagen">
-        <img
-          src="URL_PUBLICA_DE_TU_GIF"
-          alt="Ilustración de cabello largo y brillante">
-      </div>
+            <div class="contenido">
+                <h2>¡Luce un cabello espectacular!</h2>
 
-      <div class="contenido">
-        <h2>¡Luce un cabello espectacular!</h2>
+                <p>
+                    Descubre el cuidado que tu cabello necesita.
+                    Con Keratinas Glow queremos ayudarte a lucir
+                    un cabello más suave, brillante y manejable.
+                </p>
 
-        <p>
-          Descubre una forma de darle a tu cabello una apariencia más
-          suave, brillante y cuidada. En KERATINAS GLOW queremos acompañarte
-          en tu rutina de belleza.
-        </p>
+                <p>
+                    Regístrate con tu correo electrónico y recibe
+                    información especial, novedades y promociones.
+                </p>
+            </div>
 
-        <div class="beneficios">
-          <p>✨ Cabello con apariencia más brillante</p>
-          <p>🌸 Una rutina de cuidado especial</p>
-          <p>💗 Consejos y novedades para ti</p>
-        </div>
+            <!-- ANIMACIÓN CSS -->
+            <div class="animacion">
+                <div class="cabello">
+                    <div class="pelo"></div>
+                    <div class="cabeza"></div>
+                    <div class="flequillo"></div>
+                    <div class="ojo izquierdo"></div>
+                    <div class="ojo derecho"></div>
+                    <div class="sonrisa"></div>
+                    <span class="brillo uno">✦</span>
+                    <span class="brillo dos">✧</span>
+                </div>
+            </div>
 
-        <p>
-          Suscríbete y recibe información, novedades y un mensaje
-          especial de bienvenida.
-        </p>
-      </div>
+        </section>
 
-    </section>
+        <section class="formulario">
+            <h2>¡Únete a nuestra comunidad!</h2>
 
-    <section class="suscripcion">
-      <h2>¡Únete a nuestra comunidad!</h2>
-      <p>Déjanos tu correo electrónico y recibe nuestro mensaje de bienvenida.</p>
+            <p>
+                Déjanos tu correo y recibe novedades y promociones
+                de Keratinas Glow.
+            </p>
 
-      <form id="formulario">
-        <input
-          type="email"
-          name="email"
-          placeholder="Escribe tu correo electrónico"
-          required>
+            <form id="formularioCorreo">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Ingresa tu correo electrónico"
+                    required
+                >
 
-        <button type="submit" id="boton">
-          Suscribirme
-        </button>
-      </form>
+                <button type="submit" id="botonEnviar">
+                    ¡Quiero recibir información!
+                </button>
+            </form>
 
-      <p id="mensaje" aria-live="polite"></p>
-    </section>
-  </main>
+            <div id="mensaje" role="status"></div>
+        </section>
+    </main>
 
-  <footer>
-    <p><strong>KERATINAS GLOW</strong></p>
-    <p>Realza tu belleza, deja brillar tu cabello.</p>
-    <p>© 2026 KERATINAS GLOW. Todos los derechos reservados.</p>
-  </footer>
+    <footer>
+        <p>© 2026 KERATINAS GLOW | Belleza y cuidado para tu cabello</p>
+    </footer>
 
-  <script>
-    // Public Key de EmailJS
-    emailjs.init({
-      publicKey: "qvRjaNsiNt_HuXini"
-    });
+    <script>
+        // Configuración de EmailJS
+        emailjs.init({
+            publicKey: "qvRjaNsiNt_HuXini"
+        });
 
-    const formulario = document.getElementById("formulario");
-    const boton = document.getElementById("boton");
-    const mensaje = document.getElementById("mensaje");
+        const formulario = document.getElementById("formularioCorreo");
+        const mensaje = document.getElementById("mensaje");
+        const boton = document.getElementById("botonEnviar");
 
-    formulario.addEventListener("submit", function(event) {
-      event.preventDefault();
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
 
-      boton.disabled = true;
-      boton.textContent = "Enviando...";
-      mensaje.textContent = "";
+            boton.disabled = true;
+            boton.textContent = "Enviando...";
+            mensaje.textContent = "";
 
-      emailjs.sendForm(
-        "service_71xkqvr",
-        "template_lvocdtp",
-        formulario
-      )
-      .then(function() {
-        mensaje.textContent = "¡Gracias por suscribirte! Revisa tu correo 💗";
-        formulario.reset();
-      })
-      .catch(function(error) {
-        console.error("Error completo de EmailJS:", error);
-        mensaje.textContent =
-          "Error " + (error.status || "") + ": " +
-          (error.text || "Verifica la configuración.");
-      })
-      .finally(function() {
-        boton.disabled = false;
-        boton.textContent = "Suscribirme";
-      });
-    });
-  </script>
+            emailjs.sendForm(
+                "service_71xkqvr",
+                "template_lvocdtp",
+                formulario
+            )
+            .then(function() {
+                mensaje.style.color = "green";
+                mensaje.textContent =
+                    "¡Gracias por registrarte! Revisa tu correo electrónico.";
+                formulario.reset();
+            })
+            .catch(function(error) {
+                mensaje.style.color = "red";
+                mensaje.textContent =
+                    "No se pudo enviar el correo. " +
+                    (error.text || "Verifica la configuración de EmailJS.");
+
+                console.error("Error de EmailJS:", error);
+            })
+            .finally(function() {
+                boton.disabled = false;
+                boton.textContent = "¡Quiero recibir información!";
+            });
+        });
+    </script>
 
 </body>
 </html>
