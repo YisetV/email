@@ -177,7 +177,6 @@
     <section class="principal">
 
       <div class="imagen">
-        <!-- Reemplaza esta dirección por la URL pública de tu GIF -->
         <img
           src="URL_PUBLICA_DE_TU_GIF"
           alt="Ilustración de cabello largo y brillante">
@@ -233,7 +232,7 @@
   </footer>
 
   <script>
-    // 1. Reemplaza con tu Public Key de EmailJS
+    // Public Key de EmailJS
     emailjs.init({
       publicKey: "qvRjaNsiNt_HuXini"
     });
@@ -249,7 +248,6 @@
       boton.textContent = "Enviando...";
       mensaje.textContent = "";
 
-      // 2. Reemplaza con tu Service ID y Template ID
       emailjs.sendForm(
         "service_71xkqvr",
         "template_lvocdtp",
@@ -260,8 +258,10 @@
         formulario.reset();
       })
       .catch(function(error) {
-        console.error("Error:", error);
-        mensaje.textContent = "No se pudo enviar. Verifica la configuración e inténtalo nuevamente.";
+        console.error("Error completo de EmailJS:", error);
+        mensaje.textContent =
+          "Error " + (error.status || "") + ": " +
+          (error.text || "Verifica la configuración.");
       })
       .finally(function() {
         boton.disabled = false;
