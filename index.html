@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KERATINAS GLOW | Cabello radiante</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff7fa;
+      color: #4b2638;
+    }
+
+    header {
+      background: #f6dce8;
+      padding: 22px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #a83d70;
+      letter-spacing: 3px;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 7px;
+      color: #75445b;
+    }
+
+    .principal {
+      max-width: 1050px;
+      margin: 35px auto;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .imagen {
+      flex: 1;
+      min-width: 260px;
+      text-align: center;
+    }
+
+    .imagen img {
+      width: 100%;
+      max-width: 390px;
+      border-radius: 22px;
+      box-shadow: 0 8px 25px #d9a9bd;
+    }
+
+    .contenido {
+      flex: 1;
+      min-width: 280px;
+      max-width: 450px;
+    }
+
+    .contenido h2 {
+      font-size: 36px;
+      color: #a83d70;
+      margin-bottom: 15px;
+    }
+
+    .contenido p {
+      line-height: 1.7;
+      margin-bottom: 18px;
+      color: #684557;
+    }
+
+    .beneficios {
+      background: white;
+      border-radius: 15px;
+      padding: 18px;
+      margin: 20px 0;
+      line-height: 2;
+      box-shadow: 0 4px 15px #efd6e1;
+    }
+
+    .suscripcion {
+      background: #f9e6ee;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .suscripcion h2 {
+      color: #a83d70;
+      margin-bottom: 12px;
+    }
+
+    .suscripcion p {
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 450px;
+      margin: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px;
+      border: 1px solid #d99ab5;
+      border-radius: 25px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    button {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 25px;
+      background: #a83d70;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #7e2852;
+      transform: scale(1.04);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+      transform: none;
+    }
+
+    #mensaje {
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #4b2638;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .contenido h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>KERATINAS GLOW</h1>
+    <p>Tu cabello, tu brillo, tu esencia</p>
+  </header>
+
+  <main>
+    <section class="principal">
+
+      <div class="imagen">
+        <!-- Reemplaza esta dirección por la URL pública de tu GIF -->
+        <img
+          src="URL_PUBLICA_DE_TU_GIF"
+          alt="Ilustración de cabello largo y brillante">
+      </div>
+
+      <div class="contenido">
+        <h2>¡Luce un cabello espectacular!</h2>
+
+        <p>
+          Descubre una forma de darle a tu cabello una apariencia más
+          suave, brillante y cuidada. En KERATINAS GLOW queremos acompañarte
+          en tu rutina de belleza.
+        </p>
+
+        <div class="beneficios">
+          <p>✨ Cabello con apariencia más brillante</p>
+          <p>🌸 Una rutina de cuidado especial</p>
+          <p>💗 Consejos y novedades para ti</p>
+        </div>
+
+        <p>
+          Suscríbete y recibe información, novedades y un mensaje
+          especial de bienvenida.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="suscripcion">
+      <h2>¡Únete a nuestra comunidad!</h2>
+      <p>Déjanos tu correo electrónico y recibe nuestro mensaje de bienvenida.</p>
+
+      <form id="formulario">
+        <input
+          type="email"
+          name="email"
+          placeholder="Escribe tu correo electrónico"
+          required>
+
+        <button type="submit" id="boton">
+          Suscribirme
+        </button>
+      </form>
+
+      <p id="mensaje" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>KERATINAS GLOW</strong></p>
+    <p>Realza tu belleza, deja brillar tu cabello.</p>
+    <p>© 2026 KERATINAS GLOW. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // 1. Reemplaza con tu Public Key de EmailJS
+    emailjs.init({
+      publicKey: "TU_PUBLIC_KEY"
+    });
+
+    const formulario = document.getElementById("formulario");
+    const boton = document.getElementById("boton");
+    const mensaje = document.getElementById("mensaje");
+
+    formulario.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      boton.disabled = true;
+      boton.textContent = "Enviando...";
+      mensaje.textContent = "";
+
+      // 2. Reemplaza con tu Service ID y Template ID
+      emailjs.sendForm(
+        "service_sggcfur",
+        "template_lvocdtp",
+        formulario
+      )
+      .then(function() {
+        mensaje.textContent = "¡Gracias por suscribirte! Revisa tu correo 💗";
+        formulario.reset();
+      })
+      .catch(function(error) {
+        console.error("Error:", error);
+        mensaje.textContent = "No se pudo enviar. Verifica la configuración e inténtalo nuevamente.";
+      })
+      .finally(function() {
+        boton.disabled = false;
+        boton.textContent = "Suscribirme";
+      });
+    });
+  </script>
+
+</body>
+</html>
